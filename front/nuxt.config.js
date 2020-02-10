@@ -39,16 +39,35 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://bootstrap-vue.js.org
-    'bootstrap-vue/nuxt',
+    // Doc: https://buefy.org/
+    'nuxt-buefy',
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/auth',
+    '@nuxtjs/axios',
+    '@nuxtjs/eslint-module'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'http://127.0.0.1:99/api'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'login', method: 'post', propertyName: 'data.token' },
+          user: { url: 'profile', method: 'get', propertyName: 'data' },
+          logout: false
+        }
+      }
+    }
+  },
+  server: {
+    port: 90,
+    host: 'localhost'
+  },
   /*
    ** Build configuration
    */
