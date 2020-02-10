@@ -73,6 +73,9 @@ Route.post("comment", "CommentsController.postComment");
 
 Route.group(() => {
   Route.get("tickets/new", "TicketsController.create");
+  Route.post("tickets/new", "TicketsController.store");
+  // Route.get("tickets/:ticket_id", "TicketsController.show").middleware("auth");
+  Route.get("tickets/:ticket_id", "TicketsController.show");
   Route.get("tickets/user", "TicketsController.userTickets");
 }).prefix("api");
 

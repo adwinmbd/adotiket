@@ -23,6 +23,12 @@
               {{ loggedInUser.username }}
             </a>
             <div class="navbar-dropdown">
+              <nuxt-link class="navbar-item" to="/ticket">
+                Open Ticket
+              </nuxt-link>
+              <nuxt-link class="navbar-item" to="/tickets/user">
+                My Tickets
+              </nuxt-link>
               <nuxt-link class="navbar-item" to="/profile">
                 My Profile
               </nuxt-link>

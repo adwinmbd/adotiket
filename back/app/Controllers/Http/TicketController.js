@@ -97,7 +97,7 @@ class TicketController {
 
     // Will throw an error because we haven't found the user yet !!!!
     // send mail notification
-    await Mail.send("emails.ticket_info", { user, ticket }, message => {
+    await Mail.send("emails.ticket-info", { user, ticket }, message => {
       message.to(user.email, user.username);
       message.from("support@adotkt.com");
       message.subject(`[Ticket ID: ${ticket.ticket_id}] ${ticket.title}`);
