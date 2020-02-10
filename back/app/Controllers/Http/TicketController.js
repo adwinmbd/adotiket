@@ -32,7 +32,7 @@ class TicketController {
   /**
    * Display all tickets by a user.
    */
-  async userTickets(request, response) {
+  async userTickets({ request, response }) {
     const tickets = await Ticket.query()
       .where("user_id", request.currentUser.id)
       .fetch();
@@ -49,7 +49,7 @@ class TicketController {
   /**
    * Show the form for opening a new ticket.
    */
-  async create(request, response) {
+  async create({ request, response }) {
     const categories = await Category.pair("id", "name");
     return response.json({
       status: "success",
@@ -59,7 +59,7 @@ class TicketController {
   /**
    * Store a newly created ticket in database.
    */
-  async store(request, response) {
+  async store({ request, response }) {
     // const user = request.currentUser;
     // await User.findBy('email', 'foo@bar.com')
     const randomString = [...Array(12)]
@@ -120,7 +120,7 @@ class TicketController {
   /**
    * Display a specified ticket.
    */
-  async show(request, response) {
+  async show({ request, response }) {
     const ticket = await Ticket.query()
       .where("ticket_id", request.param("ticket_id"))
       .with("user")
@@ -142,7 +142,7 @@ class TicketController {
   /**
    * Close the specified ticket.
    */
-  asnyc close(request, response) {
+  async close({ request, response }) {
     const ticket = await Ticket.query()
       .where("ticket_id", request.param("ticket_id"))
       .firstOrFail();
@@ -163,9 +163,9 @@ class TicketController {
     );
 
     return response.json({
-        status: "success",
-        message: 'The ticket has been closed',
-      });
+      status: "success",
+      message: "The ticket has been closed"
+    });
     //response.redirect("back");
   }
 }
