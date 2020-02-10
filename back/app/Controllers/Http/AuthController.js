@@ -1,32 +1,31 @@
 "use strict";
-
-const User = use("App/Model/User");
-const { validateAll } = use("Validator");
+const User = use("App/Models/User");
+// const { validateAll } = use("Validator");
 
 class AuthController {
   /**
    * User authentication
    * */
 
-  // async register({ req, auth, resp }) {
-  async register({ req, resp }) {
-    const info = req.all();
+  // async register({ req, resp }) {
+  async register({ request, auth, response }) {
+    const info = request.only(["username", "email", "password"]);
     //add user role to data
-    const rules = {
+    /*const rules = {
       username: "required|unique:users",
       email: "required|email|unique:users",
-      password: "required|confirmed|min:6"
-    };
+      password: "required|"
+    };*/
 
-    const validate = await validateAll(info, rules);
+    //const validate = await validateAll(info, rules);
 
     // show error messages when validation fails
-    if (validate.fails()) {
+    /*if (validate.fails()) {
       return resp.status(400).json({
         status: "error",
         message: validate.messages()
       });
-    }
+    }*/
 
     try {
       //create user
@@ -36,12 +35,12 @@ class AuthController {
         const token = await auth.generate(user);
 
         if (token) {
-          return resp.json({
+          return response.json({
             status: "success",
             data: token
           });
         }
-        return resp.status(400).json({
+        return response.status(400).json({
           status: "error",
           message: "Unable to create token."
         });
@@ -52,7 +51,7 @@ class AuthController {
       //return response.route('home')
     } catch (e) {
       console.log(e);
-      return resp.status(400).json({
+      return response.status(400).json({
         status: "error",
         message: "Server error. Try again later ..."
       });
@@ -63,11 +62,11 @@ class AuthController {
    * User authentication
    * */
 
-  async login({ req, auth, resp }) {
-    // async login(req, resp) {
-    const email = req.input("email");
-    const password = req.input("password");
-
+  // async login(req, resp) {
+  async login({ request, auth, response }) {
+    // const email = req.input("email");
+    //const password = req.input("password");
+    const { email, password } = request.only(["email", "password"]);
     try {
       const token = await auth.attempt(email, password);
 
@@ -77,7 +76,7 @@ class AuthController {
       });
     } catch (e) {
       console.log(e);
-      resp.status(400).json({
+      response.status(400).json({
         status: "error",
         message: "Invalid credentials"
       });
@@ -98,13 +97,13 @@ class AuthController {
    * Logout user
    * */
 
-  async logout({ auth, response }) {
+  /*async logout({ auth, response }) {
     await auth.logout();
     return response.json({
       status: "success",
       data: "Logged out ..."
     });
-  }
+  }*/
 }
 
 module.exports = AuthController;

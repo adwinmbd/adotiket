@@ -21,7 +21,13 @@ Route.get("/", () => {
 });
 
 Route.group(() => {
+  Route.get("users", "UserController.show");
+  Route.delete("users/:id", "UserController.destroy");
   Route.post("login", "AuthController.login");
+  Route.get("tickets/new", "TicketsController.index");
+  Route.get("tickets/new", "TicketsController.store");
+  Route.post("tickets/new", "TicketsController.store");
+  // Route.get("logout", "AuthController.logout");
   Route.post("register", "AuthController.register");
   Route.get("profile", "AuthController.profile").middleware(["auth"]);
 }).prefix("api");
