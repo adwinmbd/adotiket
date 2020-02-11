@@ -1,68 +1,59 @@
+// pages/index.vue
+
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        NxTkt
-      </h1>
-      <h2 class="subtitle">
-        Nuxt ticketing front end.
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+  <section class="section">
+    <div class="container has-text-centered">
+      <div class="columns is-centered">
+        <div class="column is-5 is-4-desktop">
+          <div class="card-title">
+            <h1>Adotkt</h1>
+          </div>
+          <div>
+            <p>Welcome!</p>
+            <!--See all <a href="/admin/tickets">tickets</a>-->
+            <p>
+              <!--If user is admin-->
+              See all
+              <a href="#">tickets</a>
+            </p>
+            <!--else-->
+            <p>
+              <!--See all your <a href="/my_tickets">tickets</a> or <a href="/new_ticket">open new ticket</a>-->
+              See all your
+              <a href="#">tickets</a> or
+              <a href="#">open new ticket</a>
+            </p>
+            <!--endif-->
+          </div>
+        </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
-<script>
-import Logo from '~/components/Logo.vue'
-
-export default {
-  components: {
-    Logo
-  }
+<style scoped>
+.card-title {
+  background-color: #ededed;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
 }
-</script>
-
-<style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.card-title h1 {
+  color: #000;
   text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  font-size: 1.2rem;
 }
 </style>
+
+<script>
+// distinguish between admin and normal user
+// app/Listeners/Http.js
+
+/**
+ * Handle exception thrown when unable to authenticate the request
+ */
+/*if (error.name === 'InvalidLoginException') {
+    yield response.sendView('auth.login')
+    return
+}*/
+export default {}
+</script>

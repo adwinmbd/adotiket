@@ -20,8 +20,81 @@ Route.get("/", () => {
   return { greeting: "Hello world in JSON" };
 });
 
+/*Route.group(() => {
+  Route.get("users", "UserController.show");
+  Route.delete("users/:id", "UserController.destroy");
+  Route.get("tickets/new", "TicketsController.index");
+  Route.get("tickets/new", "TicketsController.store");
+  Route.post("tickets/new", "TicketsController.store");
+}).prefix("api");*/
+
+/*
+|--------------------------------------------------------------------------
+| User Routes
+|--------------------------------------------------------------------------
+*/
+Route.group(() => {
+  Route.get("users", "UserController.show");
+  Route.delete("users/:id", "UserController.destroy");
+}).prefix("api");
+
+/*
+|--------------------------------------------------------------------------
+| Auth Routes
+|--------------------------------------------------------------------------
+*/
+/*
+Route.get("register", "AuthController.showRegisterPage");
+Route.post("register", "AuthController.register");
+Route.get("login", "AuthController.showLoginPage");
+Route.post("login", "AuthController.login");
+Route.get("logout", "AuthController.logout");
+*/
 Route.group(() => {
   Route.post("login", "AuthController.login");
   Route.post("register", "AuthController.register");
   Route.get("profile", "AuthController.profile").middleware(["auth"]);
+  // Route.get("logout", "AuthController.logout");
 }).prefix("api");
+
+/*
+|--------------------------------------------------------------------------
+| Tickets Routes
+|--------------------------------------------------------------------------
+*/
+/*
+Route.get("new_ticket", "TicketsController.create").middleware("auth");
+Route.post("new_ticket", "TicketsController.store").middleware("auth");
+Route.get("tickets/:ticket_id", "TicketsController.show").middleware("auth");
+Route.get("my_tickets", "TicketsController.userTickets").middleware("auth");
+
+Route.post("comment", "CommentsController.postComment");
+*/
+
+Route.group(() => {
+  Route.get("tickets/new", "TicketsController.create").middleware("auth");
+  Route.post("tickets/new", "TicketsController.store").middleware("auth");
+  //Route.get("tickets/:ticket_id", "TicketsController.show").middleware("auth");
+  Route.get("tickets/:ticket_id", "TicketsController.show").middleware("auth");
+  Route.get("tickets/user", "TicketsController.userTickets").middleware("auth");
+}).prefix("api");
+
+/*
+|--------------------------------------------------------------------------
+| Admin Tickets Routes
+|--------------------------------------------------------------------------
+*/
+
+/*Route.group("admin", function() {
+  Route.get("tickets", "TicketsController.index");
+  Route.post("close_ticket/:ticket_id", "TicketsController.close");
+})
+  .prefix("admin")
+  .middleware(["auth", "admin"]);*/
+
+Route.group(() => {
+  Route.get("tickets", "TicketsController.index");
+  Route.post("close_ticket/:ticket_id", "TicketsController.close");
+})
+  .prefix("api/admin")
+  .middleware(["auth", "admin"]);

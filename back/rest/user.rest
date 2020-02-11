@@ -1,0 +1,46 @@
+### GET API
+GET http://localhost:99/ HTTP/1.1
+
+### GET all users
+GET http://localhost:99/api/users HTTP/1.1
+
+### Delete user
+DELETE http://localhost:99/api/users/2 HTTP/1.1
+
+### Register user
+POST http://localhost:99/api/register HTTP/1.1 
+content-type: application/json
+
+{
+    "username": "bobo",
+	"email": "bobo@bobo.com",
+	"password": "bobo"
+}
+
+### Login user
+POST http://localhost:99/api/login HTTP/1.1
+content-type: application/json
+
+{
+	"email": "bobo@bobo.com",
+	"password": "bobo"
+}
+
+### Update e-mail
+POST http://localhost:99/users/password/email HTTP/1.1
+content-type: application/json
+
+{
+	"email": "xxx@xxx.com"
+}
+
+### Password recovery e-mail
+GET http://localhost:99/users/password/email/003a7f70cf576e0a4e00 HTTP/1.1
+
+### Password update
+PUT http://localhost:99/users/password/email/003a7f70cf576e0a4e00 HTTP/1.1
+content-type: application/json
+
+{
+	"newPassword": "bbbb"
+}
