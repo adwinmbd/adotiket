@@ -7,35 +7,23 @@
         <div class="column is-4 is-offset-4">
           <h2 class="title has-text-centered">Welcome back!</h2>
 
-          <Notification v-if="error" :message="error" />
+          <Alert v-if="error" :message="error" />
 
           <form @submit.prevent="login" method="post">
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
-                <input
-                  v-model="email"
-                  type="email"
-                  class="input"
-                  name="email"
-                />
+                <input v-model="email" type="email" class="input" name="email" />
               </div>
             </div>
             <div class="field">
               <label class="label">Password</label>
               <div class="control">
-                <input
-                  v-model="password"
-                  type="password"
-                  class="input"
-                  name="password"
-                />
+                <input v-model="password" type="password" class="input" name="password" />
               </div>
             </div>
             <div class="control">
-              <button type="submit" class="button is-dark is-fullwidth">
-                Log In
-              </button>
+              <button type="submit" class="button is-dark is-fullwidth">Log In</button>
             </div>
           </form>
           <div class="has-text-centered" style="margin-top: 20px">
@@ -51,11 +39,11 @@
 </template>
 
 <script>
-import Notification from '~/components/Notification'
+import Alert from '~/components/Alert'
 export default {
   middleware: 'guest',
   components: {
-    Notification
+    Alert
   },
   data() {
     return {

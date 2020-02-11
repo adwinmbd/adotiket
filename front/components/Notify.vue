@@ -1,12 +1,12 @@
-// components/Notification.vue
+// components/Notify.vue
 
 <template>
-  <div class="notification is-danger">{{ message }}</div>
+  <div class="notification is-success">{{ message }}</div>
 </template>
 
 <script>
 export default {
-  name: 'Notification',
+  name: 'Notify',
   // eslint-disable-next-line
   props: ['message']
 }

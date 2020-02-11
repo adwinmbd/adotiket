@@ -6,48 +6,28 @@
       <div class="columns">
         <div class="column is-4 is-offset-4">
           <h2 class="title has-text-centered">Register!</h2>
-          <Notification v-if="error" :message="error" />
+          <Alert v-if="error" :message="error" />
           <form @submit.prevent="register" method="post">
             <div class="field">
               <label class="label">Username</label>
               <div class="control">
-                <input
-                  v-model="username"
-                  type="text"
-                  class="input"
-                  name="username"
-                  required
-                />
+                <input v-model="username" type="text" class="input" name="username" required />
               </div>
             </div>
             <div class="field">
               <label class="label">Email</label>
               <div class="control">
-                <input
-                  v-model="email"
-                  type="email"
-                  class="input"
-                  name="email"
-                  required
-                />
+                <input v-model="email" type="email" class="input" name="email" required />
               </div>
             </div>
             <div class="field">
               <label class="label">Password</label>
               <div class="control">
-                <input
-                  v-model="password"
-                  type="password"
-                  class="input"
-                  name="password"
-                  required
-                />
+                <input v-model="password" type="password" class="input" name="password" required />
               </div>
             </div>
             <div class="control">
-              <button type="submit" class="button is-dark is-fullwidth">
-                Register
-              </button>
+              <button type="submit" class="button is-dark is-fullwidth">Register</button>
             </div>
           </form>
           <div class="has-text-centered" style="margin-top: 20px">
@@ -61,11 +41,11 @@
 </template>
 
 <script>
-import Notification from '~/components/Notification'
+import Alert from '~/components/Alert'
 export default {
   middleware: 'guest',
   components: {
-    Notification
+    Alert
   },
   data() {
     return {
