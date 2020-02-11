@@ -1,6 +1,6 @@
 "use strict";
 
-// const Mail = use('Mail')
+const Mail = use("Mail");
 const Validator = use("Validator");
 const Ticket = use("App/Model/Ticket");
 //const User = use("App/Models/User");

@@ -14,9 +14,9 @@ class Ticket extends Model {
   /**
    * A ticket can have many comments
    */
-  /*comments() {
+  comments() {
     return this.hasMany("App/Model/Comment");
-  }*/
+  }
 
   /**
    * A ticket belongs to a user
