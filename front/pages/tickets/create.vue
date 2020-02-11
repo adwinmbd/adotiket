@@ -7,7 +7,14 @@
             <h1>Open Ticket</h1>
           </div>
           <div>
+            <!--
+              class="panel-body"
+              use cards
+              <Alert v-if="error" :message="error" />
+              <Notify v-if="success" :message="success" />
+            -->
             <form>
+              <!--post to='tickets/new'-->
               <div class="field">
                 <div class="control">
                   <input class="input" type="text" placeholder="Title" />
@@ -18,6 +25,7 @@
                   <div class="select" size="4">
                     <select>
                       <option value="0">Select Category:</option>
+                      <!--select title category? data= categories default=null ?-->
                     </select>
                   </div>
                 </div>
@@ -27,6 +35,7 @@
                   <div class="select">
                     <select>
                       <option value="0">Select Priority:</option>
+                      <!--select title priority? data=low: 'Low', medium : 'Medium', high: 'High' default=null ?-->
                     </select>
                   </div>
                 </div>
@@ -69,10 +78,7 @@
 </style>
 
 <script>
-// import notifications one to be for error and the other status
-// post url to tickets/new
 // default first select to be Select Xxxx
 // populate select from database
-// priority : lo, mid, hi
 export default {}
 </script>

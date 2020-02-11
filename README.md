@@ -9,4 +9,4 @@ It is divided into the :
 - Front-end built with Nuxtjs
 - Back-end built with Adonisjs
 
-&#9888; This project is not finished. It is work in progress **(WIP)** &#9888;
+&#9888; This project is not finished. It is work in progress **(WIP)!** &#9888;
