@@ -46,14 +46,5 @@
 
 <script>
 // distinguish between admin and normal user
-// app/Listeners/Http.js
-
-/**
- * Handle exception thrown when unable to authenticate the request
- */
-/*if (error.name === 'InvalidLoginException') {
-    yield response.sendView('auth.login')
-    return
-}*/
 export default {}
 </script>
