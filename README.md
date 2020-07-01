@@ -1,4 +1,4 @@
-# ADOTKT
+# Ticketing Adonis API
 
 > A basic support ticketing app.
 
