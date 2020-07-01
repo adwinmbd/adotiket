@@ -1,4 +1,4 @@
-# Ticketing Adonis API
+# Adonis Ticketing API
 
 > A basic support ticketing app.
 
